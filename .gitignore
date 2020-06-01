@@ -1,0 +1,6 @@
+/codenation.exe
+python-*/*
+
+!python-*/*.py
+!python-*/README.md
+!python-*/requirements.txt

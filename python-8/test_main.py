@@ -1,4 +1,4 @@
-from main import create_token
+from main import create_token, verify_signature
 
 
 class TestChallenge4:
@@ -6,3 +6,11 @@ class TestChallenge4:
 
     def test_create_token(self):
         assert create_token({"language": "Python"}, "acelera") == self.token
+
+    def test_verify_signature(self):
+        decoded_jwt = verify_signature(self.token)
+        assert decoded_jwt == {"language": "Python"}
+
+    def test_verify_signature_fail(self):
+        error_number = verify_signature("invalidtoken")
+        assert error_number == {"error": 2}
